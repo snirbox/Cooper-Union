@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calendar-header">
+            
+
+            <div class="prev-next">
+            <button id="prev-btn">prev</button>
+            <h2 id="month-year-display"></h2>
+            <button id="next-btn">next</button>   
+            </div>
+            
+    </div>
+
+<div class="calendar"> 
+
+    <div class="weekdays">
+        <div class="sun">Sun</div>
+        <div class="mon">Mon</div>
+        <div class="tue">Tue</div>
+        <div class="wed">Wed</div>
+        <div class="thu">Thu</div>
+        <div class="fri">Fri</div>
+        <div class="sat">Sat</div>   
+    </div>
+
+    <div class="days" id="days"></div>
+
+    <div id="note-editor" class="note-editor">
+        <h3 id="note-title">Add a note</h3>
+        <textarea id="note-input" rows="4" placeholder="Type your note here..."></textarea>
+        <div class="note-buttons">
+            <button id="save-note-btn">Save note</button>
+            <button id="close-note-btn">Close</button>
+        </div>
+    </div>
+
+ </div>
+
+ <script src="script.js"></script>
+</body>
+</html>
