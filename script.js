@@ -1,12 +1,13 @@
 const daysBox = document.getElementById('days');
 const headerText = document.getElementById('month-year-display');
-const backButton = document.getElementById('prev-btn');
+const prevButton = document.getElementById('prev-btn');
 const nextButton = document.getElementById('next-btn');
 const noteBox = document.getElementById('note-editor');
 const noteTitle = document.getElementById('note-title');
 const noteInput = document.getElementById('note-input');
 const saveButton = document.getElementById('save-note-btn');
 const closeButton = document.getElementById('close-note-btn');
+const deleteButton = document.getElementById('delete-note-btn');
 
 let today = new Date();
 let notes = JSON.parse(localStorage.getItem('calendarNotes')) || {};
@@ -14,6 +15,14 @@ let chosenDay = null;
 
 function saveTheNotes() {
     localStorage.setItem('calendarNotes', JSON.stringify(notes));
+}
+
+function deleteNoteForDay(dayKey) {
+        localStorage.removeItem('calendarNotes');
+        delete notes[dayKey];
+        saveTheNotes();
+        makeCalendar(today);
+    
 }
 
 function showNoteBox(dayKey) {
@@ -85,7 +94,7 @@ function makeCalendar(dateToShow) {
     }
 }
 
-backButton.addEventListener('click', function () {
+prevButton.addEventListener('click', function () {
     today = new Date(today.getFullYear(), today.getMonth() - 1, 1);
     makeCalendar(today);
 });
@@ -106,6 +115,13 @@ saveButton.addEventListener('click', function () {
 
 closeButton.addEventListener('click', function () {
     hideNoteBox();
+});
+
+deleteButton.addEventListener('click', function () {
+    if (chosenDay) {
+        deleteNoteForDay(chosenDay);
+        hideNoteBox();
+    }
 });
 
 makeCalendar(today);
